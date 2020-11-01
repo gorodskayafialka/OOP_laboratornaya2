@@ -14,7 +14,7 @@ public class Main {
         shapes.add(new Rectangle(4, 7));
         shapes.add(new Square(33.5));
         shapes.add(new Circle(-12));
-        shapes.add(new Triangle(0, 0, 0));
+        shapes.add(new Square(10));
         double sumArea = 0;
         Shape maxPerimeter = shapes.get(0), maxArea = shapes.get(0), minPerimeter = shapes.get(0), minArea = shapes.get(0);
         for (Shape current: shapes) {
