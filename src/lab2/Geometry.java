@@ -1,26 +1,17 @@
 package lab2;
 /*
 Классы Circle, Triangle, Rectangle, Square хранят информацию о круге, треуугольнике, прямоугольнике и
-квадрате соответственно. Их методыы вычисляют площадь и периметр сответствующей фигуры. Пользователь
+квадрате соответственно. Их методы вычисляют площадь и периметр сответствующей фигуры. Пользователь
 задаёт фигуру, указывая необходимые для вычисления параметры: радиус или стороны(у). Очевидно, эти
 параметры должны быть положительны, поэтому для отрицательных значений будет принят их модуль, а нулевые
 значения будут по умолчанию заменены на 0.1.
 */
 
 class Circle implements Shape {
-    double Radius;
-
-    Circle(double Radius) {
-        try {
-            if (Radius <= 0) throw new IllegalArgumentException("Радиус должен быть положительным");
-        }
-        catch (IllegalArgumentException e) {
-            if (Radius == 0) Radius = 0.1;
-            if (Radius < 0) Radius = Radius * (-1);
-        }
-        finally {
+    private double Radius;
+    Circle(double Radius) throws IllegalArgumentException{
+            if (Radius <= 0) throw new IllegalArgumentException("Radius should be positive");
             this.Radius = Radius;
-        }
     }
 
     @java.lang.Override
@@ -38,29 +29,24 @@ class Circle implements Shape {
         String Info = "окружность с раудиусом " + Radius + "; S = " + calcArea() + ", P = " + calcPerimeter();
         return Info;
     }
+
+    public double getRadius() {
+        return Radius;
+    }
+
+    public void setRadius(double radius) {
+        Radius = radius;
+    }
 }
 
 class Triangle implements Shape {
-    double A, B, C;
-    Triangle(double A, double B, double C) {
-        try {
+    private double A, B, C;
+    Triangle(double A, double B, double C) throws IllegalArgumentException {
             if ((A <= 0)||(B <= 0)||(C <= 0))
-                throw new IllegalArgumentException("Стороны должны быть положительными");
-        }
-        catch (IllegalArgumentException e) {
-            if (A == 0) A = 0.1;
-            if (B == 0) B = 0.1;
-            if (C == 0) C = 0.1;
-            if (A < 0) A = A * (-1);
-            if (B < 0) B = B * (-1);
-            if (C < 0) C = C * (-1);
-        }
-        finally{
+                throw new IllegalArgumentException("Triangle's sides should be positive");
             this.A = A;
             this.B = B;
             this.C = C;
-        }
-
     }
 
     @java.lang.Override
@@ -79,28 +65,41 @@ class Triangle implements Shape {
     public String toString() {
         return " треугольник со сторанами " + A + ", " + B + " и " + C + "; S = " + calcArea() + ", P = " + calcPerimeter();
     }
+
+    public double getA() {
+        return A;
+    }
+
+    public void setA(double a) {
+        A = a;
+    }
+
+    public double getB() {
+        return B;
+    }
+
+    public void setB(double b) {
+        B = b;
+    }
+
+    public double getC() {
+        return C;
+    }
+
+    public void setC(double c) {
+        C = c;
+    }
 }
 
 class Rectangle implements Shape
 {
-    double A, B;
-    Rectangle(double A, double B)
+    private double A, B;
+    Rectangle(double A, double B) throws IllegalArgumentException
     {
-        try {
             if ((A <= 0)||(B <= 0))
-                throw new IllegalArgumentException("Стороны должны быть положительными");
-        }
-        catch (IllegalArgumentException e) {
-            if (A == 0) A = 0.1;
-            if (B == 0) B = 0.1;
-            if (A < 0) A = A * (-1);
-            if (B < 0) B = B * (-1);
-        }
-        finally
-        {
+                throw new IllegalArgumentException("Rectangle's sides should be positive");
         this.A = A;
         this.B = B;
-        }
     }
 
     @java.lang.Override
@@ -117,21 +116,32 @@ class Rectangle implements Shape
     public String toString() {
         return "прямоугольник с длиной " + A +" и  шириной " + B + "; S = " + calcArea() + ", P = " + calcPerimeter();
     }
+
+    public double getA() {
+        return A;
+    }
+
+    public void setA(double a) {
+        A = a;
+    }
+
+    public double getB() {
+        return B;
+    }
+
+    public void setB(double b) {
+        B = b;
+    }
 }
 
 class Square implements Shape
 {
-    double A;
+    private double A;
 
-    Square(double A)
+    Square(double A) throws IllegalArgumentException
     {
-        try {
-            if (A <= 0) throw new IllegalArgumentException("Сторона должна быть положительна");
-        }
-        catch (IllegalArgumentException e) {
-            if (A == 0) A = 0.1;
-            if (A < 0) A = A * (-1);
-        }
+            if (A <= 0)
+                throw new IllegalArgumentException("Square's side should be positive");
         this.A = A;
     }
 
@@ -148,5 +158,13 @@ class Square implements Shape
     @Override
     public String toString() {
         return "квадрат со стороной " + A + "; S = " + calcArea() + ", P = " + calcPerimeter();
+    }
+
+    public double getA() {
+        return A;
+    }
+
+    public void setA(double a) {
+        A = a;
     }
 }
