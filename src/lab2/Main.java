@@ -11,28 +11,24 @@ public class Main {
         }
         catch (IllegalArgumentException e) {
             System.out.println(e);
-            shapes.remove(shapes.size()-1);
         }
         try {
             shapes.add(new Circle(-20));
         }
         catch (IllegalArgumentException e) {
             System.out.println(e);
-           shapes.remove(shapes.size()-1);
         }
         try {
             shapes.add(new Rectangle(4, 7));
         }
         catch (IllegalArgumentException e) {
             System.out.println(e);
-            shapes.remove(shapes.size()-1);
         }
         try {
             shapes.add(new Square(10));
         }
         catch (IllegalArgumentException e) {
             System.out.println(e);
-            shapes.remove(shapes.size()-1);
         }
 
             shapes.add(new Square(33.5));
@@ -42,7 +38,6 @@ public class Main {
             catch (IllegalArgumentException e)
             {
                 System.out.println(e);
-                shapes.remove(shapes.size()-1);
             }
             double sumArea = 0;
             Shape maxPerimeter = shapes.get(0), maxArea = shapes.get(0), minPerimeter = shapes.get(0), minArea = shapes.get(0);
